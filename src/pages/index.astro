@@ -1,11 +1,54 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
+import { readFileSync } from 'fs';
+import { resolve } from 'path';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const svgContent = readFileSync(resolve('./public/portfoliobaggrund.svg'), 'utf-8');
 ---
 
-<Layout>
-	<Welcome />
+<Layout title="Mie Venø Skjærbæk">
+
+  <header class="absolute top-8 left-10 z-10">
+    <h1 class="text-[#d17326]  text-3xl font-bold">Mie Venø Skjærbæk</h1>
+    <p class="text-[#d17326] text-lg">//Coded Designer</p>
+  </header>
+
+  <main class="flex items-center justify-center w-full min-h-screen overflow-hidden">
+  <div id="illustration">
+    <Fragment set:html={svgContent} />
+  </div>
+</main>
+
 </Layout>
+
+<script>
+  const svg = document.querySelector('#illustration svg') as HTMLElement;
+  if (svg) {
+    svg.removeAttribute('width');
+    svg.removeAttribute('height');
+    svg.style.display = 'block';
+    svg.style.margin = '0 auto';
+    svg.style.width = 'auto';
+    svg.style.height = '100vh';
+    svg.style.maxWidth = '100%';
+  }
+
+  // Typet links objekt
+  const links: Record<string, string> = {
+    Computer: '/cases',
+    telefon: '/contact',
+    hjerte: '/about',
+    puslespil: '/about'
+  };
+
+  ['Computer', 'telefon', 'hjerte', 'puslespil'].forEach(id => {
+    const el = document.getElementById(id) as HTMLElement;
+    if (el) {
+      el.style.cursor = 'pointer';
+      el.addEventListener('click', () => window.location.href = links[id]);
+      el.addEventListener('mouseenter', () => el.style.opacity = '0.7');
+      el.addEventListener('mouseleave', () => el.style.opacity = '1');
+    }
+  });
+</script>
+
