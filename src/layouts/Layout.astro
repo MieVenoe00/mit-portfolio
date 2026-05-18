@@ -1,6 +1,6 @@
 ---
 import '../styles/global.css';
-const { title = "Mie Venø Skjærbæk" } = Astro.props;
+const { title } = Astro.props;
 ---
 
 
@@ -15,9 +15,15 @@ const { title = "Mie Venø Skjærbæk" } = Astro.props;
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
     <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
+    <title>Mie Venø Skjærbæk //{title}</title>   
   </head>
   <body>
+    <header class="absolute top-8 left-10 z-10">
+      <a href="/">
+        <h1 class="text-[#d17326] text-3xl font-bold">Mie Venø Skjærbæk</h1>
+      </a>
+      <p class="text-[#d17326] text-lg">//{title}</p>
+    </header>
     <slot />
   </body>
 </html>
