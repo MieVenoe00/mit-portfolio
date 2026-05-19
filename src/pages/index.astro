@@ -3,7 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import { readFileSync } from 'fs';
 import { resolve } from 'path';
 
-const svgContent = readFileSync(resolve('./public/portfoliobaggrund.svg'), 'utf-8');
+const svgContent = readFileSync(resolve('./public/baggrund2.svg'), 'utf-8');
 
 ---
 
@@ -34,22 +34,78 @@ const svgContent = readFileSync(resolve('./public/portfoliobaggrund.svg'), 'utf-
     svg.style.maxWidth = '100%';
   }
 
-  // Typet links objekt
   const links: Record<string, string> = {
     Computer: '/cases',
-    telefon: '/contact',
-    hjerte: '/about',
-    puslespil: '/about'
+    kontaktplane: '/contact',
+    kontakt: '/contact',
+    ommigplane: '/about',
+    kerne: '/about',
   };
 
-  ['Computer', 'telefon', 'hjerte', 'puslespil'].forEach(id => {
-    const el = document.getElementById(id) as HTMLElement;
-    if (el) {
-      el.style.cursor = 'pointer';
-      el.addEventListener('click', () => window.location.href = links[id]);
-      el.addEventListener('mouseenter', () => el.style.opacity = '0.7');
-      el.addEventListener('mouseleave', () => el.style.opacity = '1');
-    }
+  const hoverColor = '#F47E1E';
+  const defaultColor = '#d17326';
+
+  // Definér grupper med triggers og targets
+  const groups = [
+    {
+      triggers: ['kontaktplane', 'kontakt'],
+      targets: ['kontakt', 'platform1'],
+    },
+    {
+      triggers: ['ommigplane', 'kerne'],
+      targets: ['kerne', 'platform5'],
+    },
+    {
+      triggers: ['Computer'],
+      targets: ['Computer'],
+    },
+  ];
+
+  function collectEls(el: HTMLElement) {
+    const strokeEls: SVGElement[] = [];
+    const fillEls: SVGElement[] = [];
+    el.querySelectorAll('*').forEach((child) => {
+      const c = child as SVGElement;
+      const style = c.getAttribute('style') || '';
+      if (style.includes(`stroke:${defaultColor}`)) strokeEls.push(c);
+      if (style.includes(`fill:${defaultColor}`)) fillEls.push(c);
+    });
+    return { strokeEls, fillEls };
+  }
+
+  groups.forEach(group => {
+    // Saml alle elementer fra targets
+    const strokeEls: SVGElement[] = [];
+    const fillEls: SVGElement[] = [];
+
+    group.targets.forEach(targetId => {
+      const targetEl = document.getElementById(targetId) as HTMLElement;
+      if (!targetEl) return;
+      const { strokeEls: s, fillEls: f } = collectEls(targetEl);
+      strokeEls.push(...s);
+      fillEls.push(...f);
+    });
+
+    // Sæt events på alle triggers
+    group.triggers.forEach(triggerId => {
+      const triggerEl = document.getElementById(triggerId) as HTMLElement;
+      if (!triggerEl) return;
+
+      if (links[triggerId]) triggerEl.style.cursor = 'pointer';
+
+      triggerEl.addEventListener('click', () => {
+        if (links[triggerId]) window.location.href = links[triggerId];
+      });
+
+      triggerEl.addEventListener('mouseenter', () => {
+        strokeEls.forEach(c => c.style.stroke = hoverColor);
+        fillEls.forEach(c => c.style.fill = hoverColor);
+      });
+
+      triggerEl.addEventListener('mouseleave', () => {
+        strokeEls.forEach(c => c.style.stroke = defaultColor);
+        fillEls.forEach(c => c.style.fill = defaultColor);
+      });
+    });
   });
 </script>
-
