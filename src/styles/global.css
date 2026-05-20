@@ -8,3 +8,77 @@
 body {
   font-family: "Roboto Mono", monospace;
 }
+
+/* ----- Cases------- */
+.cases-wrapper {
+  display: flex;
+  flex-direction: column;
+  padding-top: 8rem; /* plads til header */
+  padding-bottom: 4rem;
+}
+
+.case-card {
+  position: relative;
+  width: 32%;
+}
+
+.case-left {
+  margin-right: 40%;
+}
+.case-right {
+  margin-left: 40%;
+}
+
+.case-card:not(:first-child) {
+  margin-top: -15rem; /* juster dette tal til dit overlap */
+}
+
+.case-card:nth-child(1) {
+  z-index: 1;
+}
+.case-card:nth-child(2) {
+  z-index: 2;
+}
+.case-card:nth-child(3) {
+  z-index: 3;
+}
+.case-card:nth-child(4) {
+  z-index: 4;
+}
+.case-card:nth-child(5) {
+  z-index: 5;
+}
+
+.case-platform {
+  width: 100%;
+  display: block;
+}
+
+/* .case-image {
+  position: absolute;
+  top: -90px;
+  right: -20px;
+  width: 40%;
+  z-index: 10;
+} */
+
+.case-right {
+  right: auto;
+  left: -20px;
+}
+
+/* Smooth animation på innercircle */
+[id^="innercircle"] ellipse {
+  transition:
+    rx 0.2s ease,
+    ry 0.2s ease;
+}
+
+[id^="casebutton"] {
+  cursor: pointer;
+}
+
+/* Transition via CSS custom properties */
+[id$="-innercircle"] {
+  transition: r 0.3s ease;
+}

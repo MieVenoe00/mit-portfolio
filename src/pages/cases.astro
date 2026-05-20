@@ -1,10 +1,81 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import { readFileSync } from 'fs';
+import { resolve } from 'path';
+
+function prefixSvgIds(svgContent: string, prefix: string): string {
+  // Erstat id="..." definitioner
+  let result = svgContent.replace(/id="([^"]+)"/g, `id="${prefix}-$1"`);
+  // Erstat url(#...) referencer
+  result = result.replace(/url\(#([^)]+)\)/g, `url(#${prefix}-$1)`);
+  // Erstat xlink:href="#..." og href="#..." referencer
+  result = result.replace(/(xlink:href|href)="#([^"]+)"/g, `$1="#${prefix}-$2"`);
+  return result;
+}
+
+const aaben = prefixSvgIds(readFileSync(resolve('./public/aabencase.svg'), 'utf-8'), 'aaben');
+const iltsvind = prefixSvgIds(readFileSync(resolve('./public/iltsvindcase.svg'), 'utf-8'), 'iltsvind');
+const koln = prefixSvgIds(readFileSync(resolve('./public/kolncase.svg'), 'utf-8'), 'koln');
 ---
 
 <Layout title="Cases">
 
-  <main class="flex items-center justify-center w-full min-h-screen overflow-hidden">
-    <h1 class="text-4xl font-bold">Cases Page</h1>
+  <main class=" cases-wrapper flex items-center justify-center w-full min-h-screen overflow-hidden">
+  
+
+
+    <article class="case-card case-left">
+      <div class="case-platform" set:html={aaben} />
+    </article>
+
+    <article class="case-card case-right">
+      <div class="case-platform" set:html={iltsvind} />
+    </article>
+
+    <article class="case-card case-left">
+      <div class="case-platform" set:html={koln} />
+    </article>
+
+
+
+   
   </main>
+
+  <script>
+    const caseCards = document.querySelectorAll('.case-card');
+    caseCards.forEach(card => {
+      card.addEventListener('click', () => {
+        card.classList.toggle('expanded');
+      });
+    });
+
+    // Hover animation på casebutton
+  document.querySelectorAll('[id$="-casebutton"]').forEach(button => {
+    const prefix = button.id.replace('-casebutton', '');
+    const innerCircle = document.getElementById(`${prefix}-innercircle`);
+    const outerCircle = document.getElementById(`${prefix}-outercircle`);
+
+    if (!innerCircle || !outerCircle) return;
+
+    // Hent outerCircle's radius og centrum
+    const outerR = outerCircle.getAttribute('r') || outerCircle.getAttribute('rx');
+    const cx = outerCircle.getAttribute('cx');
+    const cy = outerCircle.getAttribute('cy');
+
+    // Sæt transition på innercircle
+    innerCircle.style.transition = 'r 0.3s ease, cx 0.3s ease, cy 0.3s ease';
+
+    const originalR = innerCircle.getAttribute('r') || innerCircle.getAttribute('rx');
+
+    button.addEventListener('mouseenter', () => {
+      innerCircle.setAttribute('r', outerR);
+      if (cx) innerCircle.setAttribute('cx', cx);
+      if (cy) innerCircle.setAttribute('cy', cy);
+    });
+
+    button.addEventListener('mouseleave', () => {
+      innerCircle.setAttribute('r', originalR);
+    });
+  });
+  </script>
 </Layout>
