@@ -9,6 +9,15 @@ body {
   font-family: "Roboto Mono", monospace;
 }
 
+
+#headOverskrift {
+  font-size: 2.5rem;
+}
+
+#sideTag {
+  font-size: 1.9rem;
+}
+
 /* ----- Cases------- */
 .cases-wrapper {
   display: flex;
@@ -23,10 +32,10 @@ body {
 }
 
 .case-left {
-  margin-right: 40%;
+  margin-right: 32%;
 }
 .case-right {
-  margin-left: 40%;
+  margin-left: 32%;
 }
 
 .case-card:not(:first-child) {
@@ -53,40 +62,14 @@ body {
   width: 100%;
   display: block;
 }
-
-/* .case-image {
-  position: absolute;
-  top: -90px;
-  right: -20px;
-  width: 40%;
-  z-index: 10;
-} */
+.case-left {
+  left: auto;
+  right: -10px;
+}
 
 .case-right {
   right: auto;
-  left: -20px;
+  left: -10px;
 }
 
-/* Smooth animation på innercircle */
-[id^="innercircle"] ellipse {
-  transition:
-    rx 0.2s ease,
-    ry 0.2s ease;
-}
 
-[id^="casebutton"] {
-  cursor: pointer;
-}
-
-/* Transition via CSS custom properties */
-[id$="-innercircle"] {
-  transition: r 0.3s ease;
-}
-
-#aaben-innercircle {
-  r: 10px; /* din originale radius */
-  transition: r 0.3s ease;
-}
-#aaben-innercircle.hovered {
-  r: 30px; /* outerCircle radius */
-}
