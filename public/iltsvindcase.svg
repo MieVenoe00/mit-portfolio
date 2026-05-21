@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg width="100%" height="100%" viewBox="0 0 1041 889" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
-    <g transform="matrix(1,0,0,1,-1297.494062,-526.641687)">
+<svg width="100%" height="100%" viewBox="0 0 1040 888" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+    <g transform="matrix(1,0,0,1,-1297.994062,-527.141687)">
         <g id="case2" transform="matrix(1,0,0,1,-0.471433,135.272182)">
             <g transform="matrix(-0.449889,0,0,0.449889,2504.37562,324.602975)">
                 <g id="platform">
@@ -51,11 +51,11 @@
             <g transform="matrix(0.389615,0.224944,-0.389615,0.224944,1516.165536,859.106406)">
                 <g transform="matrix(90,0,0,90,1348.172462,150)">
                 </g>
-                <text x="51.962px" y="150px" style="font-family:'RobotoMono-Regular', 'Roboto Mono', monospace;font-size:90px;fill:rgb(209,115,38);">Iltsvind Interaktivtspil</text>
+                <text x="-2.047px" y="150px" style="font-family:'RobotoMono-Regular', 'Roboto Mono', monospace;font-size:90px;fill:rgb(209,115,38);">Iltsvind Interaktivt spil</text>
             </g>
             <g id="Group-60.jpeg" serif:id="Group 60.jpeg" transform="matrix(0.241254,-0.139288,0,0.278576,1300.465495,602.801367)">
                 <use xlink:href="#_Image1" x="0" y="0" width="1500px" height="886px"/>
-                <rect x="0" y="0" width="1500" height="886" style="fill:none;stroke:rgb(209,115,38);stroke-width:25.38px;"/>
+                <rect x="0" y="0" width="1500" height="886" style="fill:none;stroke:rgb(209,115,38);stroke-width:20.31px;"/>
             </g>
             <g id="casebutton">
                 <g id="buttonplane" transform="matrix(0.866025,-0.5,1,0.57735,38.971143,-22.5)">

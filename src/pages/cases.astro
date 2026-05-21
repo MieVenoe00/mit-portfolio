@@ -49,33 +49,37 @@ const koln = prefixSvgIds(readFileSync(resolve('./public/kolncase.svg'), 'utf-8'
       });
     });
 
-    // Hover animation på casebutton
-  document.querySelectorAll('[id$="-casebutton"]').forEach(button => {
-    const prefix = button.id.replace('-casebutton', '');
-    const innerCircle = document.getElementById(`${prefix}-innercircle`);
-    const outerCircle = document.getElementById(`${prefix}-outercircle`);
+    
+    // Casebutton animation 
+   document.querySelectorAll('[id$="-casebutton"]').forEach(button => {
+  const prefix = button.id.replace('-casebutton', '');
+  const innerGroup = document.getElementById(`${prefix}-innercircle`);
 
-    if (!innerCircle || !outerCircle) return;
+  if (!innerGroup) return;
 
-    // Hent outerCircle's radius og centrum
-    const outerR = outerCircle.getAttribute('r') || outerCircle.getAttribute('rx');
-    const cx = outerCircle.getAttribute('cx');
-    const cy = outerCircle.getAttribute('cy');
+  const innerEllipse = innerGroup.querySelector('ellipse');
+  if (!innerEllipse) return;
 
-    // Sæt transition på innercircle
-    innerCircle.style.transition = 'r 0.3s ease, cx 0.3s ease, cy 0.3s ease';
+  const origRx = parseFloat(innerEllipse.getAttribute('rx'));
+  const origRy = parseFloat(innerEllipse.getAttribute('ry'));
 
-    const originalR = innerCircle.getAttribute('r') || innerCircle.getAttribute('rx');
+  innerEllipse.style.transition = 'rx 0.3s ease, ry 0.3s ease';
 
-    button.addEventListener('mouseenter', () => {
-      innerCircle.setAttribute('r', outerR);
-      if (cx) innerCircle.setAttribute('cx', cx);
-      if (cy) innerCircle.setAttribute('cy', cy);
-    });
-
-    button.addEventListener('mouseleave', () => {
-      innerCircle.setAttribute('r', originalR);
-    });
+  // Cursor og link
+  button.style.cursor = 'pointer';
+  button.addEventListener('click', () => {
+    window.location.href = `/${prefix}case`;
   });
+
+  button.addEventListener('mouseenter', () => {
+    innerEllipse.style.rx = (origRx * 1.9) + 'px';
+    innerEllipse.style.ry = (origRy * 1.9) + 'px';
+  });
+
+  button.addEventListener('mouseleave', () => {
+    innerEllipse.style.rx = origRx + 'px';
+    innerEllipse.style.ry = origRy + 'px';
+  });
+});
   </script>
 </Layout>
