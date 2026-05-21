@@ -8,7 +8,9 @@
 body {
   font-family: "Roboto Mono", monospace;
 }
-
+svg {
+  overflow: visible;
+}
 
 #headOverskrift {
   font-size: 2.5rem;
@@ -71,5 +73,3 @@ body {
   right: auto;
   left: -10px;
 }
-
-
