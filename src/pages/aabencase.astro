@@ -1,10 +1,22 @@
 ---
-import Layout from "../layouts/Layout.astro";
+import CaseLayout from "../layouts/CaseLayout.astro"
+import CaseIntro from "../components/CaseIntro.astro"
+
+import heroImg from "../assets/aabenbilleder.svg";
 ---
 
-<Layout title="ÅBEN Bryggeri">
+<CaseLayout title="ÅBEN Bryggeri">
 
-  <main class="flex items-center justify-center w-full min-h-screen overflow-hidden">
+  <main class="flex flex-col items-center justify-center w-full min-h-screen overflow-hidden">
+
+    <CaseIntro>
+      <img slot="intropic" src={heroImg.src} alt="">
+      <h2 slot="introOverskrift" class="font-bold text-[#d17326] text-xl" >ÅBEN Bryggeri Labelgenerator</h2>
+      <h4 slot="introtekst"> Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ea, cupiditate? Sed est ab iste ad assumenda, pariatur sequi odit facere voluptatibus dolorem placeat, dignissimos omnis at voluptatum eligendi in nemo?</h4>
+    </div>
+    </CaseIntro>
+
     <h1 class="text-4xl font-bold">ÅBEN Bryggeri</h1>
+
   </main>
-</Layout>
+</CaseLayout>
