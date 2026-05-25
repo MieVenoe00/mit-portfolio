@@ -5,21 +5,51 @@
   --font-mono: "Roboto Mono", monospace;
 }
 
+html,
+body {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #f0ede8;
+}
+
 body {
   font-family: "Roboto Mono", monospace;
 }
 svg {
   overflow: visible;
 }
-
-#headOverskrift {
-  font-size: 2.5rem;
+#casesbtn,
+#contactbtn,
+#aboutbtn {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
 }
 
-#sideTag {
-  font-size: 1.9rem;
+nav:hover #casesbtn,
+nav:hover #contactbtn,
+nav:hover #aboutbtn {
+  opacity: 1;
+  pointer-events: all;
 }
 
+#casesbtn {
+  transition-delay: 0.05s;
+}
+#contactbtn {
+  transition-delay: 0.1s;
+}
+#aboutbtn {
+  transition-delay: 0.15s;
+}
+
+#menubtn,
+#casesbtn,
+#contactbtn,
+#aboutbtn {
+  cursor: pointer;
+}
 /* ----- Cases------- */
 .cases-wrapper {
   display: flex;

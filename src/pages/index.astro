@@ -9,13 +9,8 @@ const svgContent = readFileSync(resolve('./public/baggrund2.svg'), 'utf-8');
 
 <Layout title="Coded Design">
 
-  <!-- <header class="absolute top-8 left-10 z-10">
-    <h1 class="text-[#d17326]  text-3xl font-bold">Mie Venø Skjærbæk</h1>
-    <p class="text-[#d17326] text-lg">//{title}</p>
-  </header> -->
-
   <main class="flex items-center justify-center w-full min-h-screen overflow-hidden">
-  <div id="illustration">
+  <div id="illustration" class="md:mt-10 md:w-[80%] xl:w-full">
     <Fragment set:html={svgContent} />
   </div>
 </main>
