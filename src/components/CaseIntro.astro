@@ -1,11 +1,12 @@
 ---
 ---
 
-<section class="flex flex-row items-center justify-center gap-10 w-[80%]  overflow-hidden">
-    <div class="basis-7xl">
+<section class="flex flex-col md:flex-row items-center justify-center gap-10 w-[80%]  overflow-hidden">
+    <div class="basis-2xl max-w-4xl">
         <slot name="intropic"/>
     </div>
-    <div class="basis-auto">
+    <div class="basis-3xl max-w-4xl ">
         <slot class="text-[#d17326]" name="introOverskrift" />
         <slot name="introtekst"/>
+    </div>
 </section>
