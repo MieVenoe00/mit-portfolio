@@ -1,10 +1,73 @@
 ---
-import Layout from "../layouts/Layout.astro";
+import CaseLayout from "../layouts/CaseLayout.astro"
+import CaseIntro from "../components/CaseIntro.astro"
+import CaseGallari from "../components/CaseGallari.astro"
+import FlexComponents from "../components/FlexComponents.astro"
+import LinkKnap from "../components/LinkKnap.astro"
+import FlexRev from "../components/FlexRev.astro"
+
+import heroImg from "../assets/IltsvindIntro.svg";
+import generator from "../assets/aabengenerator.png";
+import IltsvindResearch from "../assets/iltsvindResearch.svg"
+import IltsvindStil from "../assets/iltsvindStil.svg"
+
 ---
 
-<Layout title="Videnskab.dk">
+<CaseLayout title="Videnskab.dk Interaktiv Historie">
 
-  <main class="flex items-center justify-center w-full min-h-screen overflow-hidden">
-    <h1 class="text-4xl font-bold">Videnskab.dk - Interaktivt minispil</h1>
+  <main class="flex flex-col items-center gap-20 lg:gap-30 mb-20  w-full min-h-screen ">
+
+    <CaseIntro>
+      <img slot="intropic" src={heroImg.src} alt="">
+      <h2 slot="introOverskrift" class="font-bold text-[#d17326] text-xl" >Videnskab.dk Interaktiv Historie</h2>
+      <h4 slot="introtekst"> Videnskab.dk er en digital platform for videnskabelig information og uddannelse. <br> <br>
+
+        I denne opgave designede jeg en interaktiv historie om iltsvind i havet, som skal bruges i et særligt undervisningsforløb i faget Natur & Teknik om havet omkring Danmark.
+         <br>
+        </h4>
+       
+      <h2 class="font-bold text-[#d17326] text-xl mt-15" >Målet</h2>
+      <h4> <b>Eleverne skal efter at have gennemgået den interaktive historie have en grundlæggende forståelse for:</b> <br> <br>
+        Hvilke trusler har iltsvind på havets tilstand <br> Hvordan og hvorfor det sker iltsvind
+        <br>Hvilke konsekvenser har iltsvind for dyr, mennesker og planeten
+        <br>Hvad man selv (eller samfundet) kan gøre for at bekæmpe iltsvind</h4>
+
+        <LinkKnap  href="https://videnskabdk-iltsvind.netlify.app/">
+  Prøv den interaktive historie
+</LinkKnap></div>
+    
+    </CaseIntro>
+  
+
+<FlexRev>
+      <img slot="flexRevBillede" src={IltsvindResearch.src} />
+      <h2 slot="flexRevOverskrift" class="font-bold text-[#d17326] text-xl" >Research</h2>
+      <h4 slot="flexRevTekst"> 
+        Som en del af research processen dykkede jeg ned i hele iltsvind problematikken og det videnskablige bag. Jeg undersøgte hvilke spil målgruppen allerede spillede og jeg udarbejded en målgruppeanalyse for at forstå deres behov og præferencer bedre. <br> Hele research processen var essentiel for at kunne skabe en interaktiv historie, som både var videnskabeligt korrekt og engagerende for målgruppen. </h4>
+         </h4>
+</FlexRev>
+
+<section class="flex flex-col lg:flex-row items-center justify-center gap-15 lg:gap-10 w-[80%] overflow-hidden ">
+    <div class="sm:w-lg lg:basis-2xl max-w-4xl">
+        <img src={IltsvindStil.src} alt="Løsningen">
+    </div>
+    <div class="sm:w-lg lg:basis-3xl max-w-4xl ">
+        <h2 class="font-bold text-[#d17326] text-xl" >Den Visuelle Stil</h2>
+        <h3 class="font-semibold">Troværdig, faglig, Inspirerende, universel</h3>
+        <slot name="flexTekst"/>
+    </div>
+</section>
+
+<div id="video" class="flex justify-center w-[80%] h-[42rem]">
+  <iframe
+    title="Inline Frame Example"
+     width="2320"
+    height="950"
+    src="https://videnskabdk-iltsvind.netlify.app/">
+  </iframe>
+</div>
+
+    
+
   </main>
-</Layout>
+</CaseLayout>
