@@ -13,13 +13,18 @@ import IltsvindStil from "../assets/iltsvindStil.svg"
 import iltsvindgami from "../assets/iltsvindgami.svg"
 import formidling from "../assets/formidling.svg"
 import feedback from "../assets/feedback.svg"
+import iltsvindVideo from "../assets/Iltsvindgotrough.mp4"
 
 ---
 
 <CaseLayout title="Videnskab.dk Interaktiv Historie">
 
-  <main class="flex flex-col items-center gap-20 lg:gap-30 mb-20  w-full min-h-screen ">
+  <main class="flex flex-col items-center gap-20 lg:gap-30 mb-20  w-full min-h-screen">
 
+    <section class="mt-[15rem] sm:w-xl lg:w-4xl h-auto border-4 border-[#d17326]">
+      <video src={iltsvindVideo} autoplay muted controls></video>
+    </section>
+    
     <CaseIntro>
       <img slot="intropic" src={heroImg.src} alt="">
       <h2 slot="introOverskrift" class="font-bold text-[#d17326] text-xl" >Videnskab.dk Interaktiv Historie</h2>
@@ -70,7 +75,7 @@ import feedback from "../assets/feedback.svg"
     <div class="sm:w-lg lg:basis-3xl max-w-4xl">
         <img src={iltsvindgami.src} alt="">
     </div>
-    <div class="sm:w-lg lg:basis-5xl max-w-4xl ">
+    <div class="sm:w-lg lg:basis-4xl max-w-4xl ">
         <h2 class="font-bold text-[#d17326] text-xl" >Gamification</h2>
         <h3 class="">Projektet bruger gamification til at gøre læring om iltsvind mere engagerende for elever i 4-6. klasse. Gennem valg, konsekvenser og badges oplever brugeren fortællingen som en interaktiv mission, hvor handlinger påvirker havets tilstand. Det styrker både motivation, refleksion og forståelse af komplekse problemstillinger.
 </h3>
