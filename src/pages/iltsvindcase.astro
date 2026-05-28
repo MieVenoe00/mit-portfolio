@@ -10,6 +10,9 @@ import heroImg from "../assets/IltsvindIntro.svg";
 import generator from "../assets/aabengenerator.png";
 import IltsvindResearch from "../assets/iltsvindResearch.svg"
 import IltsvindStil from "../assets/iltsvindStil.svg"
+import iltsvindgami from "../assets/iltsvindgami.svg"
+import formidling from "../assets/formidling.svg"
+import feedback from "../assets/feedback.svg"
 
 ---
 
@@ -49,13 +52,35 @@ import IltsvindStil from "../assets/iltsvindStil.svg"
 
 <section class="flex flex-col lg:flex-row items-center justify-center gap-15 lg:gap-10 w-[80%] overflow-hidden ">
     <div class="sm:w-lg lg:basis-2xl max-w-4xl">
-        <img src={IltsvindStil.src} alt="Løsningen">
+        <img src={IltsvindStil.src} alt="Den Visuelle Stil">
     </div>
     <div class="sm:w-lg lg:basis-3xl max-w-4xl ">
         <h2 class="font-bold text-[#d17326] text-xl" >Den Visuelle Stil</h2>
-        <h3 class="font-semibold">Troværdig, faglig, Inspirerende, universel</h3>
+        <p class="mt-6">Den visuelle stil er udviklet med fokus på at gøre komplekst fagligt indhold mere tilgængeligt for målgruppen ved at lade tekst og illustrationer understøtte det samme budskab.</p>
+
+        <h4 class="font-semibold mt-2">Keywords: Troværdig, faglig, Inspirerende, universel</h4>
+
+        <h3 class="font-semibold text-lg mt-6">Typografi</h3>
+        <p>Typografien Chaloops er valgt for dens bløde og uformelle udtryk, som understøtter projektets visuelle univers. Fonten gør det faglige indhold mindre tungt og mere tilgængeligt for målgruppen, samtidig med at den bidrager til en mere engagerende  brugeroplevelse.</p>
+         <h3 class="font-semibold text-lg mt-6">Farver</h3>
+        <p>Farvepaletten består primært af blå, turkise og brune nuancer inspireret af hav- og undervisningsmiljøer, hvilket skaber sammenhæng, genkendelighed og en troværdig naturfaglig stemning.</p>
+    </div>
+</section>
+<section class="flex flex-col-rev lg:flex-row-reverse items-center justify-center gap-15 lg:gap-10 w-[80%] overflow-hidden ">
+    <div class="sm:w-lg lg:basis-3xl max-w-4xl">
+        <img src={iltsvindgami.src} alt="">
+    </div>
+    <div class="sm:w-lg lg:basis-5xl max-w-4xl ">
+        <h2 class="font-bold text-[#d17326] text-xl" >Gamification</h2>
+        <h3 class="">Projektet bruger gamification til at gøre læring om iltsvind mere engagerende for elever i 4-6. klasse. Gennem valg, konsekvenser og badges oplever brugeren fortællingen som en interaktiv mission, hvor handlinger påvirker havets tilstand. Det styrker både motivation, refleksion og forståelse af komplekse problemstillinger.
+</h3>
         <slot name="flexTekst"/>
     </div>
+</section>
+<section class="sm:w-xl lg:w-3xl h-auto  flex flex-col items-center gap-10">
+   
+  <img src={formidling.src} alt="Formidling">
+  <img src={feedback.src} alt="Feedback">
 </section>
 
 <div id="video" class="flex justify-center w-[80%] h-[42rem]">
