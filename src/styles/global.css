@@ -19,6 +19,7 @@ body {
 svg {
   overflow: visible;
 }
+#homebtn,
 #casesbtn,
 #contactbtn,
 #aboutbtn {
@@ -27,6 +28,7 @@ svg {
   pointer-events: none;
 }
 
+nav:hover #homebtn,
 nav:hover #casesbtn,
 nav:hover #contactbtn,
 nav:hover #aboutbtn {
@@ -45,6 +47,7 @@ nav:hover #aboutbtn {
 }
 
 #menubtn,
+#homebtn,
 #casesbtn,
 #contactbtn,
 #aboutbtn {
