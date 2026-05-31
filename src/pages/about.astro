@@ -2,6 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 import { readFileSync } from 'fs';
 import { resolve } from 'path';
+import LinkKnap from "../components/LinkKnap.astro"
 
 import mydrawing from "./public/mydrawing.svg";
 import mydrawing2 from "./public/mydrawing2.svg";
@@ -30,6 +31,12 @@ import CVlayout2 from "./public/CVlayout2.svg";
       <div class="w-[90%] sm:w-lg md:w-xl lg:w-[70%] xl:w-[60%] 2xl:w-[60%] 3xl:w-[60%] h-auto">
           <img src={CVlayout1.src} alt="">
       </div>
+    </section>
+
+    <section>
+      <LinkKnap href="/MitCV.pdf" download="MieVenoSkjaerbaek_CV.pdf" class="mt-[5rem]">
+        Download mit CV
+      </LinkKnap>
     </section>
 
   </main>
