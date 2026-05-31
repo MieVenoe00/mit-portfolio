@@ -7,6 +7,19 @@
   --font-mono: "Roboto Mono", monospace;
 }
 
+/*
+
+h2: 
+class="font-bold text-[#d17326] text-base sm:text-lg lg:text-lg xl:text-xl 2xl:text-2xl 3xl:text-3xl"
+
+h3: 
+class="font-semibold text-base sm:text-lg lg:text-md xl:text-lg 2xl:text-xl 3xl:text-2xl"
+
+p: 
+class="text-sm sm:text-base md:text-base lg:text-base xl:text-xl 2xl:text-xl 3xl:text-2xl"
+
+*/
+
 html,
 body {
   margin: 0;
