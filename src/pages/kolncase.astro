@@ -1,10 +1,39 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import kolnAnimation from '../data/kolnanimationshero.json';
 ---
 
 <Layout title="Köln - Tyskland">
 
   <main class="flex items-center justify-center w-full min-h-screen overflow-hidden">
+    <div id="koln-hero-animation"></div>
     <h1 class="text-4xl font-bold">Köln Dynamsik visuel identitet</h1>
   </main>
 </Layout>
+
+<script>
+  import lottie from 'lottie-web';
+  import animationData from '../data/kolnanimationshero.json';
+
+
+  // Find asset med id "6"
+const asset6 = animationData.assets.find(a => a.id === '6');
+const layer0 = asset6.layers.find(l => l.ind === 0);
+
+// Fjern den shape-gruppe der har fill-farven [0.1, 0.09, 0.11, 1]
+layer0.shapes = layer0.shapes.filter(shape => {
+  const fill = shape.it?.find(item => item.ty === 'fl');
+  if (fill && fill.c.k[0] === 0.1 && fill.c.k[1] === 0.09 && fill.c.k[2] === 0.11) {
+    return false; // fjern denne gruppe
+  }
+  return true;
+});
+
+lottie.loadAnimation({
+  container: document.getElementById('koln-hero-animation')!,
+  renderer: 'svg',
+  loop: true,
+  autoplay: true,
+  animationData: animationData
+});
+</script>
