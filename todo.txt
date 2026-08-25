@@ -7,6 +7,7 @@ To Do
 ❏ Minimere belastingen - mider fylde GB så den loader hurtigere
 ❏ Flytte abilleder og andet content fra asset til public
 ❏ Færdigøre about siden 
+❏ Link til om mig fra kontakt mig
 
 Nice To:
 ❏ Animation på forsiden
