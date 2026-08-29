@@ -5,6 +5,9 @@ import { resolve } from 'path';
 
 const svgContent = readFileSync(resolve('./public/baggrund2.svg'), 'utf-8');
 
+
+const flyDuration = 18.5;
+const flyScale = 40.8; // 
 ---
 
 <Layout title="Coded Design">
@@ -13,19 +16,40 @@ const svgContent = readFileSync(resolve('./public/baggrund2.svg'), 'utf-8');
   <div id="illustration" class="md:mt-10 md:w-[80%] xl:w-full">
     <Fragment set:html={svgContent} />
   </div>
+
+  <img
+    id="paperfly"
+    src="/fly.svg"
+    alt=""
+    class="paperfly"
+    style={`--fly-duration: ${flyDuration}s; --fly-scale: ${flyScale};`}
+  />
 </main>
-  <!-- Kun på forsiden, fast i bunden til højre -->
-  <div class="fixed bottom-6 right-6 z-50 flex flex-col gap-3 text-right w-[90%] sm:w-[90%] md:w-[22%] lg:w-[20%] xl:w-[15%] 2xl:w-[15%] 3xl:w-[11%]">
-    <p class="text-[#d17326] text-[0.6rem]  xl:text-xs 2xl:text-base 3xl:text-lg">
-      Udforsk illustrationen — find mine cases, om mig og kontakt.
-    </p>
-    <p class="text-[#d17326] text-[0.6rem]  xl:text-xs 2xl:text-base 3xl:text-lg font-light">
-      Mit Portfoliet er stadig ved at tage form, men det stopper mig ikke. Har du feedback eller lyst til en snak, så
-      <a href="/contact" class="underline hover:opacity-70 transition-opacity">Kontakt mig.</a>
-    </p>
-  </div>
 
 </Layout>
+
+<style>
+  .paperfly {
+    position: fixed;
+    top: -30vh;
+    right: -30vw;
+    width: 30rem;
+    z-index: 60;
+    pointer-events: none;
+    opacity: 0;
+    transform: translate(0, 0) rotate(0deg);
+  }
+
+  .paperfly.animate {
+    opacity: 1;
+
+    transition:
+      transform var(--fly-duration) ease-in-out,
+      opacity 0.4s ease-in;
+    transform: translate(-150vw, 150vh);
+    
+  }
+</style>
 
 <script>
   const svg = document.querySelector('#illustration svg') as HTMLElement;
@@ -39,6 +63,24 @@ const svgContent = readFileSync(resolve('./public/baggrund2.svg'), 'utf-8');
     svg.style.maxWidth = '100%';
   }
 
+    // ✈️ Paperfly intro-animation — kun første gang i denne browser
+  const paperfly = document.querySelector('#paperfly') as HTMLElement;
+  if (paperfly) {
+    const STORAGE_KEY = 'paperfly-seen';
+
+    const hasSeenFly = localStorage.getItem(STORAGE_KEY);
+    // const hasSeenFly = false;
+
+    if (!hasSeenFly) {
+      setTimeout(() => {
+        paperfly.classList.add('animate');
+        localStorage.setItem(STORAGE_KEY, 'true');
+      }, 500);
+    } else {
+      paperfly.remove();
+    }
+  }
+
   const links: Record<string, string> = {
     Computer: '/cases',
     kontaktplane: '/contact',
@@ -50,7 +92,6 @@ const svgContent = readFileSync(resolve('./public/baggrund2.svg'), 'utf-8');
   const hoverColor = '#F47E1E';
   const defaultColor = '#d17326';
 
-  // Definér grupper med triggers og targets
   const groups = [
     {
       triggers: ['kontaktplane', 'kontakt'],
@@ -79,7 +120,6 @@ const svgContent = readFileSync(resolve('./public/baggrund2.svg'), 'utf-8');
   }
 
   groups.forEach(group => {
-    // Saml alle elementer fra targets
     const strokeEls: SVGElement[] = [];
     const fillEls: SVGElement[] = [];
 
@@ -91,7 +131,6 @@ const svgContent = readFileSync(resolve('./public/baggrund2.svg'), 'utf-8');
       fillEls.push(...f);
     });
 
-    // Sæt events på alle triggers
     group.triggers.forEach(triggerId => {
       const triggerEl = document.getElementById(triggerId) as HTMLElement;
       if (!triggerEl) return;
