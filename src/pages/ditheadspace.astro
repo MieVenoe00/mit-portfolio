@@ -1,0 +1,51 @@
+---
+import CaseLayout from "../layouts/CaseLayout.astro"
+import CaseIntro from "../components/CaseIntro.astro"
+import CaseGallari from "../components/CaseGallari.astro"
+import FlexComponents from "../components/FlexComponents.astro"
+
+import FlexRev from "../components/FlexRev.astro"
+---
+
+<CaseLayout title="Dit headspace">
+
+  <main class="flex flex-col items-center gap-20 lg:gap-30 mb-20  w-full min-h-screen ">
+    <section class="mt-[15rem] w-full flex items-center justify-center">
+      <CaseIntro >
+            <img slot="intropic" src="headspaceIntro.svg" alt="">
+            <h2 slot="introOverskrift" class="font-bold text-[#d17326] text-base sm:text-lg lg:text-lg xl:text-xl 2xl:text-2xl 3xl:text-3xl" >Dit headspace</h2>
+            <p slot="introtekst" class="text-sm sm:text-base md:text-base lg:text-base xl:text-xl 2xl:text-xl 3xl:text-2xl"> Dit Headspace er et pixelart-spil designet til unge mellem 12-25 år, udviklet som en kampagne for headspace Danmark. <br> <br>Gennem en legende tilgang hjælper spillet brugeren med at identificere og navngive det de bærer på mentalt. Spillet giver dem konkrete redskaber til at handle på det.
+            </p>
+             
+      
+    </CaseIntro> </section>
+
+   
+
+    <section id="testbackground" class=" sm:w-[65%] xl:w-[60%] 2xl:w-[50%] 3xl:w-[45%] w-[50%] self-center flex flex-col  justify-center gap-4">
+        <img src="/gameTroguh.png" class=" w-full h-auto max-w-full" alt="Billede af spillet" />
+        <p class="text-sm sm:text-base md:text-base lg:text-base xl:text-xl 2xl:text-xl 3xl:text-2xl"> Spillet er udviklet i Unity. Her ses en gennemgang af de centrale skærmbilleder fra prototypen. Fra første møde med spillet til worry jar-questen.</p>
+    </section>
+
+    <!-- Problem -->
+
+    <FlexComponents>
+      <img slot="flexBillede" src="/problem.png" />
+      <h2 slot="flexOverskrift" class="font-bold text-[#d17326] text-base sm:text-lg lg:text-lg xl:text-xl 2xl:text-2xl 3xl:text-3xl" >Problemstilling</h2>
+      <p slot="flexTekst" class="text-sm sm:text-base md:text-base lg:text-base xl:text-xl 2xl:text-xl 3xl:text-2xl"> Flere unge oplever udfordringer med deres mentale sundhed. Det kan være svært at vide hvor man skal starte, eller overhovedet at vide at man kan få hjælp. <br> <br>
+
+      Headspace Danmark tilbyder gratis og anonym rådgivning til unge mellem 12-25 år, men når ikke dem der endnu ikke har taget det første skridt. <br><br>
+        Opgaven var at ændre på det. Gennem en digital oplevelse der forebygger, afhjælper og giver de unge konkrete redskaber til at handle. 
+      </p>
+</FlexComponents>
+
+<FlexRev>
+      <video class="w-[65%] ml-[7rem]" slot="flexRevBillede" autoplay muted src="/headspaceVideo.mp4" />
+      <h2 slot="flexRevOverskrift" class="font-bold text-[#d17326] text-base sm:text-lg lg:text-lg xl:text-xl 2xl:text-2xl 3xl:text-3xl" >Research</h2>
+      <p slot="flexRevTekst" class="text-sm sm:text-base md:text-base lg:text-base xl:text-xl 2xl:text-xl 3xl:text-2xl"> 
+        Som en del af research processen dykkede jeg ned i hele iltsvind problematikken og det videnskablige bag. Jeg undersøgte hvilke spil målgruppen allerede spillede og jeg udarbejded en målgruppeanalyse for at forstå deres behov og præferencer bedre. <br> Hele research processen var essentiel for at kunne skabe en interaktiv historie, som både var videnskabeligt korrekt og engagerende for målgruppen. </h4>
+      </p>
+</FlexRev>
+
+    </main>
+</CaseLayout>
