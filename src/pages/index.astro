@@ -24,6 +24,8 @@ const flyScale = 40.8; //
     class="paperfly"
     style={`--fly-duration: ${flyDuration}s; --fly-scale: ${flyScale};`}
   />
+
+  <div id="cursorLabel" class="cursor-label"></div>
 </main>
 
 </Layout>
@@ -48,6 +50,27 @@ const flyScale = 40.8; //
       opacity 0.4s ease-in;
     transform: translate(-150vw, 150vh);
     
+  }
+
+  .cursor-label {
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    background: #d17326;
+    color: #f0ede8;
+    font-family: "Roboto Mono", monospace;
+    font-size: 0.875rem;
+    padding: 4px 10px;
+    opacity: 0;
+    transform: translate(-50%, -140%);
+    transition: opacity 0.15s ease;
+    z-index: 100;
+    white-space: nowrap;
+  }
+
+  .cursor-label.visible {
+    opacity: 1;
   }
 </style>
 
@@ -88,6 +111,25 @@ const flyScale = 40.8; //
     ommigplane: '/about',
     kerne: '/about',
   };
+
+  // 🏷️ Labels der vises ved cursoren når man hover de forskellige elementer
+  const labels: Record<string, string> = {
+    Computer: 'Cases',
+    kontaktplane: 'Kontakt',
+    kontakt: 'Kontakt',
+    ommigplane: 'Om mig',
+    kerne: 'Om mig',
+  };
+
+  const cursorLabel = document.getElementById('cursorLabel') as HTMLElement;
+  let currentLabel: string | null = null;
+
+  document.addEventListener('mousemove', (e) => {
+    if (cursorLabel && currentLabel) {
+      cursorLabel.style.left = `${e.clientX}px`;
+      cursorLabel.style.top = `${e.clientY}px`;
+    }
+  });
 
   const hoverColor = '#F47E1E';
   const defaultColor = '#d17326';
@@ -135,20 +177,35 @@ const flyScale = 40.8; //
       const triggerEl = document.getElementById(triggerId) as HTMLElement;
       if (!triggerEl) return;
 
-      if (links[triggerId]) triggerEl.style.cursor = 'pointer';
+      
+      if (links[triggerId]) {
+      triggerEl.style.cursor = 'url(/pointerCursor3.svg) 0 0, pointer'; }
 
       triggerEl.addEventListener('click', () => {
         if (links[triggerId]) window.location.href = links[triggerId];
       });
 
-      triggerEl.addEventListener('mouseenter', () => {
+      triggerEl.addEventListener('mouseenter', (e) => {
         strokeEls.forEach(c => c.style.stroke = hoverColor);
         fillEls.forEach(c => c.style.fill = hoverColor);
+
+        if (labels[triggerId] && cursorLabel) {
+          currentLabel = labels[triggerId];
+          cursorLabel.textContent = currentLabel;
+          cursorLabel.classList.add('visible');
+          cursorLabel.style.left = `${(e as MouseEvent).clientX}px`;
+          cursorLabel.style.top = `${(e as MouseEvent).clientY}px`;
+        }
       });
 
       triggerEl.addEventListener('mouseleave', () => {
         strokeEls.forEach(c => c.style.stroke = defaultColor);
         fillEls.forEach(c => c.style.fill = defaultColor);
+
+        if (labels[triggerId] && cursorLabel) {
+          currentLabel = null;
+          cursorLabel.classList.remove('visible');
+        }
       });
     });
   });

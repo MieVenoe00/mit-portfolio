@@ -30,7 +30,28 @@ body {
 
 body {
   font-family: "Roboto Mono", monospace;
+  cursor:
+    url("/activeCursor.svg") 0 0,
+    auto;
 }
+
+a,
+button,
+[role="button"] {
+  cursor:
+    url("/pointerCursor3.svg") 0 0,
+    pointer;
+}
+
+:global(#homebtn),
+:global(#casesbtn),
+:global(#contactbtn),
+:global(#aboutbtn) {
+  cursor:
+    url("/pointerCursor3.svg") 0 0,
+    pointer;
+}
+
 svg {
   overflow: visible;
 }
