@@ -13,7 +13,7 @@ import IltsvindStil from "../assets/iltsvindStil.webp"
 import iltsvindgami from "../assets/iltsvindgami.webp"
 import formidling from "../assets/formidling.webp"
 import feedback from "../assets/feedback.webp"
-import iltsvindVideo from "../assets/Iltsvindgotrough.mp4"
+import iltsvindVideo from "../assets/Iltsvind.webm"
 
 ---
 
@@ -23,12 +23,12 @@ import iltsvindVideo from "../assets/Iltsvindgotrough.mp4"
 
     <!-- Start Video -->
     <section class=" flex items-center mt-[15rem] w-[90%] sm:w-lg md:w-xl lg:w-[70%] xl:w-[60%] 2xl:w-[60%] 3xl:w-[60%] h-auto border-2 md:border-4 border-[#d17326]">
-      <video src={iltsvindVideo} autoplay muted loop playsinline></video>
+      <video src={iltsvindVideo} class="w-full h-auto block" autoplay muted loop playsinline></video>
     </section>
     
 
     <!-- Intro -->
-    <CaseIntro>
+    <CaseIntro >
       <img slot="intropic" src={heroImg.src} alt="">
       <h2 slot="introOverskrift" class="font-bold text-[#d17326] text-base sm:text-lg lg:text-lg xl:text-xl 2xl:text-2xl 3xl:text-3xl" >Videnskab.dk Interaktiv Historie</h2>
       <p slot="introtekst" class="text-sm sm:text-base md:text-base lg:text-base xl:text-xl 2xl:text-xl 3xl:text-2xl"> Videnskab.dk er en digital platform for videnskabelig information og uddannelse. <br> <br>
@@ -43,9 +43,9 @@ import iltsvindVideo from "../assets/Iltsvindgotrough.mp4"
         <br>Hvilke konsekvenser har iltsvind for dyr, mennesker og planeten
         <br>Hvad man selv (eller samfundet) kan gøre for at bekæmpe iltsvind</p>
 
-        <LinkKnap  href="https://videnskabdk-iltsvind.netlify.app/">
+        <LinkKnap class="mb-[7rem]" href="https://videnskabdk-iltsvind.netlify.app/">
             Prøv den interaktive historie
-          </LinkKnap></div>
+          </LinkKnap>
     
     </CaseIntro>
   

@@ -37,10 +37,11 @@ body {
 
 a,
 button,
-[role="button"] {
+[role="button"],
+.btn-brutal {
   cursor:
     url("/pointerCursor3.svg") 0 0,
-    pointer;
+    pointer !important;
 }
 
 :global(#homebtn),
